@@ -33,6 +33,7 @@ export interface TicketEntry {
   theater: Theater;
   date: Date;
   time: string;
+  seat: string[],
   seats: Seat[] | null;
   totalPrice: number;
   discount: number;

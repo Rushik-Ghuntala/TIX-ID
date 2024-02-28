@@ -113,9 +113,9 @@ const TransactionDetailPage = () => {
             <div className="flex flex-col gap-y-3">
               <p className="font-medium text-lg">{data?.token}</p>
               <p className="flex gap-2">
-                {data?.seats?.map((chair: Seat, index: number) => (
+                {data?.seat?.map((chair: string, index: number) => (
                   <p key={index} className="font-medium text-lg">
-                    {chair.seat}
+                    {chair}
                   </p>
                 ))}
               </p>
