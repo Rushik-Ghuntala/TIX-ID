@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --Royal-Blue: #1A2C50;
+    --Sunshine-Yellow: #FFBE00;
+    --Sweet-Red: #FF6B6B;
+    --Sky-Blue: #118EEA;
+    --White: #FFFFFF;
+    --Pastel-Yellow: #F2C46F;
+  
+    --CGV-Red: #EC1E2B;
+    --XXI-Gradient1: #F2C46F;
+    --XXi-Gradient2: #C6943F;
+    --Cenepolis-Blue: #000E62;
+  
+    --Default: #1A2C50;
+    --Hover: #282764;
+    --Pressed: #383782;
+  
+    --Shade-900: #333333;
+    --Shade-800: #333D58;
+    --Shade-700: #414A62;
+    --Shade-600: #5A637A;
+    --Shade-500: #8F98AA;
+    --Shade-400: #9DA8BE;
+    --Shade-300: #BDC5D4;
+    --Shade-200: #DADFE8;
+    --Shade-100: #FFFFFF;
+  }
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  transition: all .3s linear 0s;
+}
+
+/* .slick-slider > div{
+  margin: 0 100px;
+}
+
+.slick-slide {
+  margin: 0 2px;
+} */
+
+.bg-login-background {
+  background-image: url('../src/assets/Login-Background.png');
+}
+.bg-signup1-background {
+  background-image: url('../src/assets/Signup-Background.png');
+}
+.bg-signup2-background {
+  background-image: url('../src/assets/Signup-Background2.png');
+}
+
+.visibleLogin {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hiddenLogin {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.slide-in-right {
+  animation: slideRight 0.5s ease forwards;
+}
+
+@keyframes slideRight {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}
+
+
+.slick-prev::before{
+  display: none;
+}
+.slick-next::before{
+  display: none;
+}
+
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --Royal-Blue: #1A2C50;
+  --Sunshine-Yellow: #FFBE00;
+  --Sweet-Red: #FF6B6B;
+  --Sky-Blue: #118EEA;
+  --White: #FFFFFF;
+  --Pastel-Yellow: #F2C46F;
+
+  --CVG-Red: #EC1E2B;
+  --XXI-Gradient1: #F2C46F;
+  --XXi-Gradient2: #C6943F;
+  --Cenepolis-Blue: #000E62;
+
+  --Default: #1A2C50;
+  --Hover: #282764;
+  --Pressed: #383782;
+
+  --Shade-900: #333333;
+  --Shade-800: #333D58;
+  --Shade-700: #414A62;
+  --Shade-600: #5A637A;
+  --Shade-500: #8F98AA;
+  --Shade-400: #9DA8BE;
+  --Shade-300: #BDC5D4;
+  --Shade-200: #DADFE8;
+  --Shade-100: #FFFFFF;
+
+
+
+
+
+}
+
+.xxi{
+  background-image: linear-gradient(#F2C46F, #C6943F);
+}
+.cgv{
+  background-color: var(--CGV-Red);
+}
+.cinepolis{
+  background-color: var(--Cenepolis-Blue);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+} */
+
+/* body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+} */
+
+/* button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.scroll_none::-webkit-scrollbar{
+  outline: 0;
+}
