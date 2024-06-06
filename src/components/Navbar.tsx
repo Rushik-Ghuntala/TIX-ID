@@ -10,7 +10,7 @@ import { useState } from "react";
 import { RootState } from "../redux/store";
 
 const Navbar = () => {
-  const { isLoggedIn, userData } = useSelector(
+  const { userData } = useSelector(
     (state: RootState) => state.login
   );
   const login = useSelector((state: any) => state.login);

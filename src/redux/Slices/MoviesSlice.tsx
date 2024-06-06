@@ -16,7 +16,7 @@ export const MoviesSlice = createSlice({
     error: "",
   } as MovieSliceProps,
   reducers: {
-    showAllData: (state) => {
+    showAllData: (_state) => {
       // state.loading = false;
       // console.log("state.moviesData", state.moviesData);
     },

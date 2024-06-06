@@ -17,7 +17,7 @@ export const NewsSlice = createSlice({
         error: "",
     } as InitialStateProps,
     reducers: {
-        showAllData: (state) => {
+        showAllData: (_state) => {
             // state.loading = false;
             // console.log("state.moviesData", state.newsData)
         }

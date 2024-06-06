@@ -73,10 +73,10 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateSelect }) => {
   >([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  let isSelected = false;
-  if (selectedDate) {
-    isSelected = true;
-  }
+  // let isSelected = false;
+  // if (selectedDate) {
+    // isSelected = true;
+  // }
   // console.log("isSelected", isSelected);
 
   useEffect(() => {

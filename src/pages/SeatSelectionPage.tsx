@@ -5,7 +5,7 @@ import {
   setSelectedSeats,
 } from "../redux/Slices/MovieBookingSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { FcClock, FcApproval } from "react-icons/fc";
@@ -20,7 +20,7 @@ const SeatSelectionPage = () => {
 
   // const [selectedSeat, setSelectedSeat] = useState<string[]>([]);
 
-  const { selectedTheater, selectedTime } = useSelector(
+  const { selectedTime } = useSelector(
     (state: any) => state.movieBooking
   );
 
@@ -84,11 +84,11 @@ const SeatSelectionPage = () => {
   };
 
   //storing all data in variable
-  const [storedData] = useState({
-    storedTheater: selectedTheater,
-    storedTime: selectTime,
-    storedSeat: selectedSeats,
-  });
+  // const [storedData] = useState({
+  //   storedTheater: selectedTheater,
+  //   storedTime: selectTime,
+  //   storedSeat: selectedSeats,
+  // });
 
   // console.log(storedData);
 
