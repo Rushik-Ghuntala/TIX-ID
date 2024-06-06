@@ -36,7 +36,7 @@ const movieBookingSlice = createSlice({
   initialState,
   reducers: {
     setMovieData: (state, action) => {
-      console.log("Slice Movie che: ", state.selectedMovie);
+      // console.log("Slice Movie che: ", state.selectedMovie);
       state.selectedMovie = action.payload;
     },
     setTheaterData: (state, action) => {

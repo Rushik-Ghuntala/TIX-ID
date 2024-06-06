@@ -19,7 +19,7 @@ export const ComingSoonMovieSlice = createSlice({
     reducers: {
         showAllData: (state) => {
             // state.loading = false;
-            console.log("state.comingSoonMovieData: ", state.comingSoonMovieData)
+            // console.log("state.comingSoonMovieData: ", state.comingSoonMovieData)
         }
     },
     extraReducers: (builder) => {

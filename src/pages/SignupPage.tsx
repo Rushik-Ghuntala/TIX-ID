@@ -1,13 +1,15 @@
+// /pages/SignupPage.tsx
 import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { RxDividerVertical } from "react-icons/rx";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { userLogin } from "../redux/Slices/LoginSlice";
+import { userSignup } from "../redux/Slices/SignupSlice";
 import { userSignupData } from "../type/SignupPageType";
 import "react-phone-input-2/lib/style.css";
+import { RootState } from "../redux/store";
 
 const SignupPage = () => {
   const [step, setStep] = useState(1);
@@ -21,8 +23,7 @@ const SignupPage = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  //set show passwor dand hide password variable
+  const signupData = useSelector((state: RootState) => state.signup.userData);
   const [showPassword, setShowPassword] = useState(false);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -33,13 +34,16 @@ const SignupPage = () => {
     }));
   };
 
-  // const handlePhoneChange = (value: string, country: any) => {
-  //   setUserData((prevData) => ({
-  //     ...prevData,
-  //     phoneNumber: value,
-  //     countryCode: country.dialCode,
-  //   }));
-  // };
+  const validateEmail = (email: string): boolean => {
+    // Simple email format validation using regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneNumber = (phoneNumber: string): boolean => {
+    // Simple phone number format validation
+    return phoneNumber.length === 10 && !isNaN(Number(phoneNumber));
+  };
 
   const submitHandler1 = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -49,13 +53,12 @@ const SignupPage = () => {
       return;
     }
 
+    if (!validatePhoneNumber(userData.telNumber)) {
+      toast.error("Please enter a valid phone number");
+      return;
+    }
+
     setStep(2);
-
-    // console.log("Full Signup Data: ", userData);
-    // dispatch(userLogin(userData));
-    // window.localStorage.setItem('userData', JSON.stringify(userData));
-
-    // navigate('/')
   };
 
   const submitHandler2 = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -66,11 +69,20 @@ const SignupPage = () => {
       return;
     }
 
-    console.log("Full Signup Data: ", userData);
-    dispatch(userLogin(userData));
-    window.localStorage.setItem("userData", JSON.stringify(userData));
+    if (!validateEmail(userData.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
 
-    navigate("/");
+    // Check if user is already registered
+    if (signupData.email === userData.email) {
+      toast.error("User with this email is already registered");
+      return;
+    }
+
+    dispatch(userSignup(userData));
+    window.localStorage.setItem("userData", JSON.stringify(userData));
+    navigate("/login");
   };
 
   return (
@@ -256,6 +268,7 @@ const SignupPage = () => {
       </div>
     </div>
   );
+
 };
 
 export default SignupPage;

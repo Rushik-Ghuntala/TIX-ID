@@ -10,11 +10,13 @@ import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 import persistStore from 'redux-persist/es/persistStore'
 import MyTicketSlice from './Slices/MyTicketSlice'
+import SignupSlice from './Slices/SignupSlice'
 
 // ...
 
 const rootReducer = combineReducers({
   login: LoginSlice,
+  signup: SignupSlice,
     movies: MoviesSlice,
     news: NewsSlice,
     comingSoonMovie: ComingSoonMovieSlice,

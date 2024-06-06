@@ -14,15 +14,15 @@ const TransactionDetailPage = () => {
   const location = useLocation();
   const token = location.pathname.split("/").at(-1);
 
-  console.log(token);
+  // console.log(token);
 
   useEffect(() => {
-    console.log(tickets);
+    // console.log(tickets);
     const filteredTicket = tickets.filter(
       (ticket: TicketEntry) =>
         ticket.token === parseInt(token as unknown as string)
     );
-    console.log(filteredTicket);
+    // console.log(filteredTicket);
     // setData(filteredTicket[0]);
 
     if (filteredTicket) {

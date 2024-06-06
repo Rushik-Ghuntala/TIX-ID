@@ -77,7 +77,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ onDateSelect }) => {
   if (selectedDate) {
     isSelected = true;
   }
-  console.log("isSelected", isSelected);
+  // console.log("isSelected", isSelected);
 
   useEffect(() => {
     const currentDate = new Date();

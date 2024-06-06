@@ -18,8 +18,10 @@ import {
 import Footer from "../components/Footer";
 import { FcSearch, FcFilmReel } from "react-icons/fc";
 import { FaIndianRupeeSign } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const MovieSchedulePage = () => {
+  const login = useSelector((state: any) => state.login);
   const dispatch = useDispatch();
 
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<{
@@ -52,7 +54,7 @@ const MovieSchedulePage = () => {
       state.theater
   );
 
-  console.log("Theater Data from Thunk: ", theaterData);
+  // console.log("Theater Data from Thunk: ", theaterData);
 
   const [_selectedTheater, setSelectedTheater] = useState(null);
   const [_selectedDateTime, setSelectedDateTime] = useState(null);
@@ -86,7 +88,7 @@ const MovieSchedulePage = () => {
 
   const handleDateSelection = (date: Date) => {
     setSelectedDate(date);
-    console.log("Selected date: ", selectedDate);
+    // console.log("Selected date: ", selectedDate);
   };
 
   const handleTimeSlotSelection = (
@@ -97,7 +99,7 @@ const MovieSchedulePage = () => {
     badge: string
   ) => {
     setSelectedTimeSlot({ theaterName, dimensionCategory, time, price, badge });
-    console.log("Selected Time Slot Data: ", selectedTimeSlot);
+    // console.log("Selected Time Slot Data: ", selectedTimeSlot);
   };
 
   const [searchParams, _setSearchParams] = useSearchParams();
@@ -160,20 +162,20 @@ const MovieSchedulePage = () => {
       const movie = movies.find((movieData) => movieData.id === +id);
       if (movie) {
         setMovieData(movie);
-        console.log(movie.name);
+        // console.log(movie.name);
       }
     }
   };
 
   const getTheaterData = () => {
     const city = selectedCity.toLowerCase();
-    console.log("selectedCity:", city);
+    // console.log("selectedCity:", city);
     const theatersInCity = theaterData.filter(
       (theater) => theater.city.toLowerCase() === city
     );
-    console.log("theaterData", theatersInCity);
+    // console.log("theaterData", theatersInCity);
     setCinemaData(theatersInCity);
-    console.log(theatersInCity);
+    // console.log(theatersInCity);
   };
 
   useEffect(() => {
@@ -447,7 +449,7 @@ const MovieSchedulePage = () => {
               <sup>*</sup>Seat selection can be done after this
             </div>
 
-            {selectedDate && selectedTimeSlot && (
+            {selectedDate && selectedTimeSlot && login.isLoggedIn && (
               <Link to={`/movie-schedule/seat-selection?id=${tid}`}>
                 <button
                   className="border rounded-lg bg-[--Royal-Blue] w-full p-2.5 text-2xl font-medium text-[--Sunshine-Yellow]"
@@ -456,6 +458,17 @@ const MovieSchedulePage = () => {
                   Buy Now
                 </button>
               </Link>
+            )}
+
+            {selectedDate && selectedTimeSlot && !login.isLoggedIn && (
+              <div
+                className="cursor-pointer"
+                onClick={() => toast.error("Please Login to continue!")}
+              >
+                <button className="border rounded-lg bg-[--Royal-Blue] w-full p-2.5 text-2xl font-medium text-[--Sunshine-Yellow]">
+                  Buy Now
+                </button>
+              </div>
             )}
           </div>
         </div>

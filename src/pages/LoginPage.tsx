@@ -1,33 +1,28 @@
-// import React from 'react'
+// /pages/LoginPage.tsx
 
 import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { RxDividerVertical } from "react-icons/rx";
-
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { userLogin } from "../redux/Slices/LoginSlice";
-
 import { userLoginData } from "../type/LoginPageType";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { RootState } from "../redux/store"; // Adjust the import path to your store file
 
 const LoginPage = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-
   const [userData, setUserData] = useState<userLoginData>({
-    // email: "",
-    name: "",
     password: "",
-    telNumber: "", // Add phoneNumber to userData
-    // countryCode: "" // Add countryCode to userData
+    telNumber: "",
   });
 
-  //set show passwor dand hide password variable
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const signupData = useSelector((state: RootState) => state.signup.userData);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -35,18 +30,11 @@ const LoginPage = () => {
       ...prevData,
       [name]: value,
     }));
-    // console.log("Login User Data: ", userData)
   };
 
-  // const handlePhoneChange = (value: string, country: any) => {
-  //     setUserData(prevData => ({
-  //         ...prevData,
-  //         phoneNumber: value,
-  //         countryCode: country.dialCode // Update countryCode based on selected country
-  //     }));
-  // };
-
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
+  const submitHandler = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
 
     if (!userData.telNumber || !userData.password) {
@@ -54,13 +42,35 @@ const LoginPage = () => {
       return;
     }
 
-    console.log("Full Login Data: ", userData);
+    setLoading(true);
 
-    dispatch(userLogin(userData));
+    try {
+      // Simulate API request
+      await new Promise<void>((resolve, reject) => {
+        // Here, you would typically make an API call to validate the user
+        // and check if the password is correct
+        setTimeout(() => {
+          // For demonstration, I'm assuming a simple check
+          if (userData.telNumber !== signupData.telNumber) {
+            reject("User not registered");
+          } else if (userData.password !== signupData.password) {
+            reject("Incorrect password");
+          } else {
+            resolve(); // Resolve without any value
+          }
+        }, 1000);
+      });
 
-    window.localStorage.setItem("userData", JSON.stringify(userData));
-
-    navigate(-1);
+      const completeUserData = { ...signupData, ...userData };
+      dispatch(userLogin(completeUserData));
+      window.localStorage.setItem("userData", JSON.stringify(completeUserData));
+      navigate("/");
+    } catch (error: any) {
+      // Specify the type of error as string
+      toast.error(error.toString());
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -165,6 +175,7 @@ const LoginPage = () => {
 
                   <button
                     type="submit"
+                    onClick={() => navigate("/signup")}
                     className=" border border-[--Shade-600] h-12 rounded-lg text-[--Royal-Blue] font-medium text-xs min-[270px]:text-sm mob-s:text-md mob-m:text-xl"
                   >
                     Register Now

@@ -18,7 +18,7 @@ export const MoviesSlice = createSlice({
   reducers: {
     showAllData: (state) => {
       // state.loading = false;
-      console.log("state.moviesData", state.moviesData);
+      // console.log("state.moviesData", state.moviesData);
     },
   },
   extraReducers: (builder) => {

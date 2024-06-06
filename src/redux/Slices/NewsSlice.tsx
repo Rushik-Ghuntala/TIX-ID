@@ -19,7 +19,7 @@ export const NewsSlice = createSlice({
     reducers: {
         showAllData: (state) => {
             // state.loading = false;
-            console.log("state.moviesData", state.newsData)
+            // console.log("state.moviesData", state.newsData)
         }
     },
     extraReducers: (builder) => {

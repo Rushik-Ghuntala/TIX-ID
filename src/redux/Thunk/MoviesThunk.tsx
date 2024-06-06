@@ -11,7 +11,7 @@ export const showMoviesData = createAsyncThunk(
 
         try{
             const movieResult = movies;
-            console.log(movieResult)
+            // console.log(movieResult)
             // await new Promise(resolve => setTimeout(resolve, 3300))
             return movieResult;
         }

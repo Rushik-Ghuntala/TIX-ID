@@ -16,7 +16,7 @@ const NewsPostPage = () => {
         const id = searchParams.get("id");
         if(id) {
           const d = newsData.filter( data => data.id === +id)
-          console.log(d[0]);
+          // console.log(d[0]);
           setData(d[0]);
         }
     }

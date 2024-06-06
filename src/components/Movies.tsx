@@ -50,7 +50,7 @@ const Movies = () => {
 
   const handleMovieSelect = (movie: any) => {
     setSelectedMovie(movie);
-    console.log("handleMovieSelect: ", movie);
+    // console.log("handleMovieSelect: ", movie);
     localStorage.setItem("selectedMovie", JSON.stringify(movie));
 
     dispatch(setMovieData(movie));

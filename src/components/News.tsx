@@ -20,7 +20,7 @@ const News = () => {
     (state: { news: { newsData: NewsData[]; loading: boolean } }) => state.news
   );
 
-  console.log("NewsData form Thunk: ", newsData);
+  // console.log("NewsData form Thunk: ", newsData);
 
   return (
     <div className="mx-auto mb-[2rem]">

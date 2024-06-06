@@ -7,8 +7,12 @@ import { useSelector } from "react-redux";
 import { FcMenu } from "react-icons/fc";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useState } from "react";
+import { RootState } from "../redux/store";
 
 const Navbar = () => {
+  const { isLoggedIn, userData } = useSelector(
+    (state: RootState) => state.login
+  );
   const login = useSelector((state: any) => state.login);
   // const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,7 +80,8 @@ const Navbar = () => {
                     <Link to={"/account"}>
                       <div className="text-[--Pastel-Yellow] ">
                         {/* {login.userData.name.charAt(0)} */}
-                        Rushik
+                        {userData.name}
+                        
                       </div>
                     </Link>
                   </li>

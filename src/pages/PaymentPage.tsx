@@ -42,21 +42,21 @@ const PaymentPage = () => {
   };
 
   const discountHandler = () => {
-    console.log("Im in discount handler");
+    // console.log("Im in discount handler");
     if (discount === 0) {
-      console.log("0 che");
+      // console.log("0 che");
       let dis = 0;
       try {
         const coupanCodeData: VoucherData = voucherCode;
         if (coupanCodeData[coupanCode]) {
           dis = coupanCodeData[coupanCode];
-          console.log(dis);
+          // console.log(dis);
           setInvalid(false);
         } else {
           setInvalid(true);
         }
       } catch (e) {
-        console.log("Error avi gy Coupan code leva ma.");
+        // console.log("Error avi gy Coupan code leva ma.");
       }
       setDiscount(dis);
     } else {

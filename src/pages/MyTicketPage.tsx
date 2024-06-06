@@ -13,7 +13,7 @@ const MyTicketPage = () => {
 
   const { tickets } = useSelector((state: any) => state.myTicket);
 
-  console.log("allTickets", tickets);
+  // console.log("allTickets", tickets);
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {

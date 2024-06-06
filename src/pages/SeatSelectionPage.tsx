@@ -24,7 +24,7 @@ const SeatSelectionPage = () => {
     (state: any) => state.movieBooking
   );
 
-  console.log("Selectded Theater ", selectedTheater);
+  // console.log("Selectded Theater ", selectedTheater);
 
   // const { theaterName, dimensionCategory, time } = selectedTheater;
 
@@ -90,7 +90,7 @@ const SeatSelectionPage = () => {
     storedSeat: selectedSeats,
   });
 
-  console.log(storedData);
+  // console.log(storedData);
 
   return (
     <div>
